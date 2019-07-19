@@ -59,4 +59,35 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<spring.cloud.config.uri>http://localhost:8762/</spring.cloud.config.uri>
+				<eureka.client.serviceUrl.defaultZone>http://localhost:8761/eureka/</eureka.client.serviceUrl.defaultZone>
+
+				<!-- 数据库配置 -->
+				<main.datasource.url>
+					<![CDATA[jdbc:mysql://127.0.0.1:3306/sp2p_5?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true]]>
+				</main.datasource.url>
+				<main.datasource.username>root</main.datasource.username>
+				<main.datasource.password>123456</main.datasource.password>
+
+				<!-- MQ 配置-->
+				<spring.rabbitmq.host>127.0.0.1</spring.rabbitmq.host>
+				<spring.rabbitmq.port>5672</spring.rabbitmq.port>
+				<spring.rabbitmq.username>admin</spring.rabbitmq.username>
+				<spring.rabbitmq.password>admin</spring.rabbitmq.password>
+				<spring.rabbitmq.virtual-host>/gzjkDev</spring.rabbitmq.virtual-host>
+				<spring.rabbitmq.listener.direct.acknowledge-mode>manual</spring.rabbitmq.listener.direct.acknowledge-mode>
+				<spring.rabbitmq.listener.simple.acknowledge-mode>manual</spring.rabbitmq.listener.simple.acknowledge-mode>
+
+				<!-- Redis 配置 -->
+				<redis.cluster.nodes>127.0.0.1:6379</redis.cluster.nodes>
+				<spring.redis.database>0</spring.redis.database>
+
+			</properties>
+		</profile>
+	</profiles>
+
 </project>
